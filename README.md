@@ -1,72 +1,112 @@
 # cShell
-Basic custom shell in C
 
-Introduction - 
-This project implements a custom shell in C. The shell supports running commands with arguments, pipelines, and basic input/output redirection. It works on Linux and macOS environments.
+cShell is a custom command-line shell implemented in C, designed to execute basic Unix-like commands with support for arguments, pipelines, and input/output redirection. This project serves as an educational tool to understand shell functionalities and process management in Unix-based systems.
 
-Prerequisites -
-C Compiler: Ensure you have GCC or Clang installed.
 
-On Linux: sudo apt-get install gcc (Debian/Ubuntu) or sudo yum install gcc (Red Hat/CentOS).
-On macOS: Install Xcode Command Line Tools using xcode-select --install.
-Make Utility: Make sure the make command is available.
+## Introduction
 
-On Linux: Already installed in most distributions; otherwise, use your package manager.
-On macOS: Comes with Xcode Command Line Tools.
-Shell Files:
+The cShell project demonstrates the implementation of a basic shell environment in C, providing insights into command parsing, process creation, and inter-process communication. It supports executing commands with arguments, chaining commands using pipelines, and redirecting input and output streams.
 
-The project consists of three main files:
-shell.c
-utils.c
-utils.h
-Installation Steps
-Clone the Repository:
+## Features
 
-Place all provided files (shell.c, utils.c, utils.h) into a project folder.
-Navigate to the Folder:
+- **Command Execution**: Run standard Unix commands with arguments.
+- **Pipelines**: Chain multiple commands using the pipe (`|`) operator.
+- **Input/Output Redirection**: Redirect input (`<`) and output (`>`) streams.
+- **Cross-Platform Compatibility**: Works on Linux and macOS environments.
 
-Open a terminal and navigate to the project directory:
-cd /path/to/project
+## Prerequisites
 
-Build the Shell:
+Ensure the following tools are installed on your system:
 
-Run the make command to compile the shell:
-make
+- **C Compiler**: GCC or Clang.
+  - *Linux*: Install via package manager if not already installed.
+    - Debian/Ubuntu:
+      ```bash
+      sudo apt-get install gcc
+      ```
+    - Red Hat/CentOS:
+      ```bash
+      sudo yum install gcc
+      ```
+  - *macOS*: Install Xcode Command Line Tools:
+    ```bash
+    xcode-select --install
+    ```
+- **Make Utility**: For building the project.
+  - *Linux*: Typically pre-installed; if not, install via package manager.
+  - *macOS*: Included with Xcode Command Line Tools.
 
-If make is not available, use GCC manually:
-gcc shell.c utils.c -o shell
-Usage
+## Installation
 
-Run the Shell:
+Follow these steps to set up and compile cShell:
 
-Execute the shell binary:
-./shell
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/AkashDeore15/cShell.git
+   ```
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd cShell
+   ```
+3. **Build the Shell**:
+   - Using `make`:
+     ```bash
+     make
+     ```
+   - If `make` is unavailable, compile directly with `gcc`:
+     ```bash
+     gcc shell.c utils.c -o shell
+     ```
 
-Test Commands:
+## Usage
 
-Use standard shell commands such as:
-ls
-echo "Hello, World!"
-pwd
+After successful compilation:
 
-To use pipelines:
-ls | wc
-Exit the Shell:
+1. **Run cShell**:
+   ```bash
+   ./shell
+   ```
+2. **Execute Commands**:
+   - Standard commands:
+     ```bash
+     ls -l
+     ```
+   - Using pipelines:
+     ```bash
+     ls | grep '.c'
+     ```
+   - Input/Output redirection:
+     ```bash
+     cat < input.txt > output.txt
+     ```
+3. **Exit the Shell**:
+   - Type `exit` or press `Ctrl+D` to terminate the shell session.
 
-Press Ctrl+C or type exit to close the shell.
+## Project Structure
 
-Troubleshooting
-Common Errors:
+- `shell.c`: Main implementation of the shell, handling command input and execution.
+- `utils.c`: Utility functions supporting command parsing and processing.
+- `utils.h`: Header file declaring utility functions and macros.
 
-Missing Compiler: Install GCC or Clang as mentioned above.
-Permission Denied: Run chmod +x shell to make the binary executable.
+## Contributing
 
-Debugging:
+Contributions to enhance cShell are welcome. To contribute:
 
-To debug, add -g to the GCC compilation command:
+1. **Fork the Repository**.
+2. **Create a New Branch**:
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. **Commit Your Changes**:
+   ```bash
+   git commit -m 'Add new feature'
+   ```
+4. **Push to the Branch**:
+   ```bash
+   git push origin feature-branch
+   ```
+5. **Open a Pull Request**.
 
-gcc -g shell.c utils.c -o shell
+## License
 
-Validation:
-
-Validate the commands and pipelines using print_pipeline from the utils library.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
